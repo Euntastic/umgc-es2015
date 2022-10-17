@@ -442,3 +442,18 @@ raceResults(['Tom', 'Margaret', 'Allison', 'David', 'Pierre'])
 ```js
 const raceResults = ([first, second, third, ...rest]) => ({first, second, third, rest});
 ```
+
+## Maps and Sets
+
+### Quick Question 1
+What does the following code return?
+```js
+new Set([1,1,2,2,3,4]);
+```
+
+A set object containing the values `1`, `2`, `3`, and `4`.
+
+### Quick Question 2
+### Quick Question 3
+### hasDuplicate
+### vowelCount
