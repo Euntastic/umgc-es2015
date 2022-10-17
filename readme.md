@@ -1,6 +1,7 @@
 # ES2015 Exercises
 
 These exercises will just be done in markdown.
+
 (For those unaware, there is a Table of Contents available to the left of the filename above.)
 
 ## let and const
@@ -28,12 +29,42 @@ const myArray = new Array; // Keeping a reference to an array.
 > You can also redeclare with a `var` any number of times without error.
 > They are also initialized at the start with `undefined`.
 2. What is the difference between `var` and `const`?
-   
-    `const` variables cannot be reassigned or redeclared. `const` must also be initialized during declaration.
+> `const` variables cannot be reassigned or redeclared. `const` must also be initialized during declaration.
 3. What is the difference between `let` and `const`?
-   
-    `const` variables cannot be reassigned.
+> `const` variables cannot be reassigned.
 4. What is hoisting?
-   
-    When the variables or functions are initialized before anything within their block.
-    This allows you to invoke either variables or functions before they are declared.
+> When the variables or functions are initialized before anything within their block.
+> This allows you to invoke either variables or functions before they are declared.
+
+## Arrow Functions
+
+### ES5 Map Callback
+```js
+function double(arr) {
+    return arr.map(function(val) {
+        return val * 2;
+    });
+}
+```
+
+### ES2015 Arrow Functions Shorthand
+```js
+const double = arr => arr.map(val => val * 2);
+```
+
+### Refactor the following function to use arrow functions:
+```js
+function squareAndFindEvens(numbers){
+  var squares = numbers.map(function(num){
+    return num ** 2;
+  });
+  var evens = squares.filter(function(square){
+    return square % 2 === 0;
+  });
+  return evens;
+}
+```
+
+```js
+const squareAndFindEvens = numbers => numbers.map(num => num ** 2).filter(square => square % 2 === 0);
+```
