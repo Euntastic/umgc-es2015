@@ -167,3 +167,93 @@ const combine = (obj1, obj2) => ({...obj1, ...obj2});
 
 const update = (obj, key, val) => ({...obj, [key]: val});
 ```
+
+## Object Enhancements
+
+### Refactor
+
+#### Same keys and values
+```js
+function createInstructor(firstName, lastName){
+  return {
+    firstName: firstName,
+    lastName: lastName
+  }
+}
+```
+
+ES2015:
+```js
+function createInstructor(firstName, lastName){
+  return {
+    firstName,
+    lastName
+  }
+}
+```
+
+#### Computed Property Names
+```js
+var favoriteNumber = 42;
+
+var instructor = {
+  firstName: "Colt"
+}
+
+instructor[favoriteNumber] = "That is my favorite!"
+```
+
+ES2015:
+```js
+let favoriteNumber = 42;
+
+let instructor = {
+    firstName: "Colt",
+    [favoriteNumber]: "This is my favorite!"
+}
+```
+
+#### Object Methods
+```js
+var instructor = {
+  firstName: "Colt",
+  sayHi: function(){
+    return "Hi!";
+  },
+  sayBye: function(){
+    return this.firstName + " says bye!";
+  }
+}
+```
+
+ES2015:
+```js
+let instructor = {
+    firstName: "Colt",
+    sayHi() { return "Hi!" },
+    sayBye() { return this.firstName + " says bye!" },
+}
+```
+
+### createAnimal function
+Write a function which generates an animal object. The function should accept 3 arguments:
+* _species: The species of animal ('cat', 'dog')._
+* _verb: A string used to name a function ('bark', 'bleet')._
+* _noise: A string to be printing when the above function is called ('woof', 'baaa')._
+Use one or more of the object enhancements we've covered.
+```js
+const d = createAnimal("dog", "bark", "Woooof!")
+// {species: "dog", bark: ƒ}
+d.bark()  //"Woooof!"
+
+const s = createAnimal("sheep", "bleet", "BAAAAaaaa")
+// {species: "sheep", bleet: ƒ}
+s.bleet() //"BAAAAaaaa"
+```
+
+The function:
+```js
+function createAnimal(species, verb, noise) {
+    return {species, [verb]() { return noise } }
+}
+```
