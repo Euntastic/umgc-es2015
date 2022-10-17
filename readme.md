@@ -454,6 +454,59 @@ new Set([1,1,2,2,3,4]);
 A set object containing the values `1`, `2`, `3`, and `4`.
 
 ### Quick Question 2
+What does the following code return?
+```js
+[...new Set("referee")].join("")
+```
+
+```js
+"ref"
+```
+
 ### Quick Question 3
+What does the Map **m** look like after running the following code?
+```js
+let m = new Map();
+m.set([1,2,3], true);
+m.set([1,2,3], false);
+```
+
+```
+[[1,2,3], true],
+[[1,2,3], false]
+```
 ### hasDuplicate
+Write a function called hasDuplicate which accepts an array and returns true or false
+if that array contains a duplicate.
+
+```js
+hasDuplicate([1,3,2,1) // true
+hasDuplicate([1,5,-1,4]) // false
+```
+```js
+const hasDuplicate = arr => new Set(arr).size !== arr.length;
+```
 ### vowelCount
+Write a function called vowelCount which accepts a string and returns a map
+where the keys are numbers and the values are the count of the vowels in
+the string.
+```js
+vowelCount('awesome') // Map { 'a' => 1, 'e' => 2, 'o' => 1 }
+vowelCount('Colt') // Map { 'o' => 1 }
+```
+
+```js
+function vowelCount(str){
+    const vowels = 'aeiou';
+    const vowelMap = new Map();
+    str = str.toLowerCase();
+    for (let char of str) {
+        if (vowels.includes(char)) {
+            if (vowelMap.has(char)) vowelMap.set(char, vowelMap.get(char) + 1);
+            else vowelMap.set(char, 1);
+        }
+    }
+    return vowelMap;
+}
+```
+
